@@ -1,0 +1,27 @@
+# dependências
+/node_modules
+
+# Next.js
+/.next/
+/.next-email/
+/out/
+next-env.d.ts
+*.tsbuildinfo
+
+# testes
+/test-results/
+/playwright-report/
+
+# saídas geradas
+/dist/
+
+# pedidos gravados localmente (dados pessoais: nunca versionar)
+/.dados/
+
+# variáveis de ambiente (segredos: nunca versionar)
+.env
+.env.local
+.env.*.local
+
+# sistema
+.DS_Store

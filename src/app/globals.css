@@ -1,0 +1,310 @@
+@import "tailwindcss" source(none);
+/* Só as classes usadas em src/ entram no CSS (README e testes ficam de fora). */
+@source "../";
+
+/*
+  Identidade do Condomínios
+  Conceito: painel de prazos. Páginas claras e calmas, dados em fonte tabular,
+  situação sempre por cor + ícone + texto. Ousadia só no painel do topo.
+
+  Cores: azul-marinho (marca), azul médio (ações), verde moderado (em dia),
+  âmbar (próximo do vencimento), vermelho (atrasado), cinzas com leve tom azul.
+  Tipos: Instrument Sans (títulos estreitos e texto), IBM Plex Mono (datas e números).
+*/
+
+:root {
+  --fundo: #ffffff;
+  --fundo-2: #f3f6f9;
+  --superficie: #ffffff;
+  --superficie-2: #f6f8fb;
+  --borda: #dce3eb;
+  --borda-forte: #c3cdd9;
+  --titulo: #0e2a47;
+  --texto: #1a2638;
+  --texto-2: #4a586c;
+  --texto-3: #5f6d82;
+  --marinho: #0e2a47;
+  --marinho-2: #17395e;
+  --sobre-marinho: #ffffff;
+  --sobre-marinho-2: #c2cfdf;
+  --azul: #1d5bc9;
+  --azul-forte: #164aa8;
+  --azul-suave: #eaf1fd;
+  --azul-borda: #bfd3f5;
+  --sobre-azul: #ffffff;
+  --verde: #1e7550;
+  --verde-fundo: #e3f2ea;
+  --verde-ponto: #2c9466;
+  --ambar: #8a5300;
+  --ambar-fundo: #fcefd6;
+  --ambar-ponto: #d48a12;
+  --vermelho: #b3262c;
+  --vermelho-fundo: #fbe7e8;
+  --vermelho-ponto: #d23a41;
+  --grade: rgb(14 42 71 / 0.055);
+  --sombra-cor: 14 42 71;
+  --foco: #1d5bc9;
+
+  --f-texto: "Instrument Sans Variable", "Instrument Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --f-dados: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --margem: 16px;
+  --altura-cabecalho: 64px;
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --margem: 32px;
+    --altura-cabecalho: 72px;
+  }
+}
+
+@media (min-width: 80rem) {
+  :root {
+    --margem: 40px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fundo: #0a1421;
+    --fundo-2: #0d1929;
+    --superficie: #111e31;
+    --superficie-2: #0e1a2b;
+    --borda: #22334b;
+    --borda-forte: #30445f;
+    --titulo: #f1f5fa;
+    --texto: #dce4ee;
+    --texto-2: #a9b6c7;
+    --texto-3: #93a2b6;
+    --marinho: #10294a;
+    --marinho-2: #18375e;
+    --sobre-marinho: #ffffff;
+    --sobre-marinho-2: #bccbde;
+    --azul: #7aaeff;
+    --azul-forte: #a0c5ff;
+    --azul-suave: #12284a;
+    --azul-borda: #2b4a7c;
+    --sobre-azul: #071426;
+    --verde: #6fd3a5;
+    --verde-fundo: #0f2e22;
+    --verde-ponto: #43bf86;
+    --ambar: #f3bb5e;
+    --ambar-fundo: #33250c;
+    --ambar-ponto: #e9a43a;
+    --vermelho: #ff9d9d;
+    --vermelho-fundo: #3b1619;
+    --vermelho-ponto: #f26a70;
+    --grade: rgb(160 190 230 / 0.07);
+    --sombra-cor: 0 0 0;
+    --foco: #7aaeff;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --fundo: #0a1421;
+  --fundo-2: #0d1929;
+  --superficie: #111e31;
+  --superficie-2: #0e1a2b;
+  --borda: #22334b;
+  --borda-forte: #30445f;
+  --titulo: #f1f5fa;
+  --texto: #dce4ee;
+  --texto-2: #a9b6c7;
+  --texto-3: #93a2b6;
+  --marinho: #10294a;
+  --marinho-2: #18375e;
+  --sobre-marinho: #ffffff;
+  --sobre-marinho-2: #bccbde;
+  --azul: #7aaeff;
+  --azul-forte: #a0c5ff;
+  --azul-suave: #12284a;
+  --azul-borda: #2b4a7c;
+  --sobre-azul: #071426;
+  --verde: #6fd3a5;
+  --verde-fundo: #0f2e22;
+  --verde-ponto: #43bf86;
+  --ambar: #f3bb5e;
+  --ambar-fundo: #33250c;
+  --ambar-ponto: #e9a43a;
+  --vermelho: #ff9d9d;
+  --vermelho-fundo: #3b1619;
+  --vermelho-ponto: #f26a70;
+  --grade: rgb(160 190 230 / 0.07);
+  --sombra-cor: 0 0 0;
+  --foco: #7aaeff;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-fundo: var(--fundo);
+  --color-fundo-2: var(--fundo-2);
+  --color-superficie: var(--superficie);
+  --color-superficie-2: var(--superficie-2);
+  --color-borda: var(--borda);
+  --color-borda-forte: var(--borda-forte);
+  --color-titulo: var(--titulo);
+  --color-texto: var(--texto);
+  --color-texto-2: var(--texto-2);
+  --color-texto-3: var(--texto-3);
+  --color-marinho: var(--marinho);
+  --color-marinho-2: var(--marinho-2);
+  --color-sobre-marinho: var(--sobre-marinho);
+  --color-sobre-marinho-2: var(--sobre-marinho-2);
+  --color-azul: var(--azul);
+  --color-azul-forte: var(--azul-forte);
+  --color-azul-suave: var(--azul-suave);
+  --color-azul-borda: var(--azul-borda);
+  --color-sobre-azul: var(--sobre-azul);
+  --color-verde: var(--verde);
+  --color-verde-fundo: var(--verde-fundo);
+  --color-verde-ponto: var(--verde-ponto);
+  --color-ambar: var(--ambar);
+  --color-ambar-fundo: var(--ambar-fundo);
+  --color-ambar-ponto: var(--ambar-ponto);
+  --color-vermelho: var(--vermelho);
+  --color-vermelho-fundo: var(--vermelho-fundo);
+  --color-vermelho-ponto: var(--vermelho-ponto);
+
+  --font-sans: var(--f-texto);
+  --font-mono: var(--f-dados);
+
+  --radius-cartao: 12px;
+  --radius-botao: 8px;
+
+  --shadow-leve: 0 1px 2px rgb(var(--sombra-cor) / 0.06);
+  --shadow-cartao: 0 1px 2px rgb(var(--sombra-cor) / 0.05), 0 14px 34px -16px rgb(var(--sombra-cor) / 0.22);
+  --shadow-painel: 0 1px 2px rgb(var(--sombra-cor) / 0.06), 0 24px 60px -24px rgb(var(--sombra-cor) / 0.35);
+}
+
+/* Margem lateral: pelo menos 16px e nunca por baixo das barras do sistema no celular. */
+@utility margem-lateral {
+  padding-left: max(var(--margem), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--margem), env(safe-area-inset-right, 0px));
+}
+
+@utility titulo-display {
+  font-size: clamp(2.35rem, 1.5rem + 2.6vw, 3.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  font-weight: 640;
+  font-stretch: 84%;
+  text-wrap: balance;
+  color: var(--titulo);
+}
+
+@utility titulo-secao {
+  font-size: clamp(1.8rem, 1.35rem + 1.6vw, 2.65rem);
+  line-height: 1.08;
+  letter-spacing: -0.022em;
+  font-weight: 630;
+  font-stretch: 87%;
+  text-wrap: balance;
+  color: var(--titulo);
+}
+
+@utility titulo-cartao {
+  font-size: 1.125rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  font-weight: 620;
+  font-stretch: 94%;
+  text-wrap: balance;
+  color: var(--titulo);
+}
+
+@utility sobretitulo {
+  font-size: 0.78rem;
+  line-height: 1.2;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  font-weight: 620;
+  color: var(--azul);
+}
+
+@utility dados {
+  font-family: var(--f-dados);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+}
+
+@utility fundo-grade {
+  background-image:
+    linear-gradient(var(--grade) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grade) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: -1px -1px;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--foco);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  section[id],
+  [data-ancora] {
+    scroll-margin-top: calc(var(--altura-cabecalho) + env(safe-area-inset-top, 0px) + 16px);
+  }
+
+  ::selection {
+    background: var(--azul-suave);
+    color: var(--titulo);
+  }
+
+  summary {
+    cursor: pointer;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+/* Fora das camadas de propósito: precisa vencer o reset da hospedagem. */
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--f-texto);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+}
+
+/* Faixa atrás da barra de status do celular, na cor do cabeçalho. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 60;
+  background: var(--fundo);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
