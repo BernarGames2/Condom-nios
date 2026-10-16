@@ -100,8 +100,8 @@ O site sobe **sem nenhuma variável de ambiente**. Nesse caso, o formulário pre
 ### Vercel
 
 1. Entre em [vercel.com](https://vercel.com) com a conta do GitHub.
-2. Clique em **Add New > Project**, escolha o repositório `condominios-site` e clique em **Deploy**. A Vercel reconhece o Next.js sozinha.
-3. O site fica em `https://condominios-site.vercel.app` (ou um nome parecido).
+2. Clique em **Add New > Project**, escolha o repositório `Condom-nios` e clique em **Deploy**. A Vercel reconhece o Next.js sozinha. Antes de publicar, dá para trocar o nome do projeto (ele vira o endereço).
+3. O site fica em `https://<nome-do-projeto>.vercel.app`.
 
 Atenção: o plano grátis da Vercel (Hobby) é para uso pessoal e não comercial. Um site que divulga um produto ou serviço é uso comercial e, pelas regras da Vercel, precisa do plano **Pro** (US$ 20 por mês).
 
